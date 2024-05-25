@@ -32,6 +32,31 @@ document.getElementById('base64Form').addEventListener('submit', event => {
   });
 });
 
+document.getElementById('decimalForm').addEventListener('submit', event => {
+  event.preventDefault();
+  
+  const decimalInput = document.getElementById('decimalInput').value.trim();
+  
+  // Validate input
+  if (!isValidDecimalInput(decimalInput)) {
+    document.getElementById('result').innerText = 'ورودی نامعتبر است! لطفاً یک رشته Decimal معتبر و با جداکننده کاما وارد کنید.';
+    return;
+  }
+  
+  const base64Output = decimalToBase64(decimalInput);
+  
+  document.getElementById('result').innerHTML = `برای کپی کلیک کنید<br>${base64Output}`;
+  
+  // Add click event listener to copy the content of the clicked element
+  const copyableElement = document.getElementById('result');
+  copyableElement.addEventListener('click', () => {
+    const textToCopy = base64Output;
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => alert('مقدار کپی شد: ' + textToCopy))
+      .catch(err => console.error('خطا در کپی کردن مقدار:', err));
+  });
+});
+
 function isValidBase64(str) {
   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
   for (let i = 0; i < str.length; i++) {
@@ -40,6 +65,17 @@ function isValidBase64(str) {
     }
   }
   return true;
+}
+
+function isValidDecimalInput(input) {
+  return /^[0-9\s,]+$/.test(input);
+}
+
+function decimalToBase64(decimalString) {
+  const decimalArray = decimalString.split(',').map(decimal => parseInt(decimal.trim()));
+  const asciiString = decimalArray.map(decimal => String.fromCharCode(decimal)).join('');
+  const base64String = btoa(asciiString);
+  return base64String;
 }
 
 function handleLinkClick(event, pageName) {
