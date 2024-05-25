@@ -1,65 +1,64 @@
 body {
-  font-family: 'Noto Sans', Arial, sans-serif;
-  background-color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
 }
 
-.copyable {
-  display: inline-block;
-  padding: 4px 8px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 4px;
-  cursor: pointer;
-}
-
 .container {
-  max-width: 800px;
-  margin: 100px auto;
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
-h1 {
-  color: red;
+h1, h2 {
+  color: #333; /*
 }
 
-h2 {
-  color: purple;
+form {
+  margin-bottom: 20px;
 }
 
-.menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.menu a {
-  display: inline-block;
+input[type="text"] {
+  width: calc(100% - 24px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
   padding: 10px 20px;
-  margin: 5px;
   background-color: #007bff;
   color: #fff;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.menu a:hover {
+button:hover {
   background-color: #0056b3;
 }
 
-a {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 20px;
+#result {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.copyable {
+  cursor: pointer;
+  border-bottom: 1px dashed #007bff;
+}
+
+.copyable:hover {
+  background-color: #f0f0f0;
 }
